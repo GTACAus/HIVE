@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HIVE Strategy Generator</title>
+    <style>
+        @font-face {
+            font-family: 'Figtree';
+            src: url('assets/Figtree-Bold.ttf') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+        body {
+            font-family: 'Figtree', sans-serif;
+            margin: 40px;
+            padding: 20px;
+            background-image: url('assets/tile.png');
+            background-repeat: repeat;
+        }
+        .program-select {
+            margin-bottom: 20px;
+        }
+        .dropdown {
+            margin: 10px 0;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        #output {
+            margin-top: 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .dropdown-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: flex-end;
+            margin-bottom: 20px;
+        }
+        .dropdown {
+            min-width: 200px;
+            flex: 1 1 200px;
+        }
+        .dropdown select {
+            width: 100%;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 1em;
+            padding: 6px 8px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            background: #fff;
+        }
+        @media (max-width: 700px) {
+            .dropdown-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+        /* New styles for the title */
+        .hive-title {
+            text-align: center;
+            margin-bottom: 0;
+            font-size: 3em;
+            letter-spacing: 0.1em;
+            font-weight: bold;
+            font-family: 'Figtree', sans-serif;
+            color: #821E50;
+        }
+        .subtitle {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-size: 1.3em;
+            color: #555;
+            font-weight: normal;
+            font-family: 'Figtree', sans-serif;
+        }
+        .curved-box {
+            background: rgba(255,255,255,0.85); /* Increased from 0.7 to 0.85 */
+            border-radius: 25px;
+            padding: 24px 32px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+        }
+        .dropdown-label {
+            display: block;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        .dropdown-heading {
+            color: #821E50;
+            font-size: 1.25em;
+            font-weight: bold;
+            font-family: 'Figtree', sans-serif;
+        }
+        .dropdown-heading b {
+            font-weight: bold;
+        }
+        .dropdown-sub {
+            color: #155B4F;
+            font-size: 0.95em;
+            font-weight: normal;
+            margin-top: 2px;
+            font-family: 'Figtree', sans-serif;
+        }
+        .dropdown-section-heading {
+            text-align: center;
+            color: #272A24;
+            font-size: 1.15em;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Replace the GTAC logo <img> with a clickable <a> -->
+    <a href="https://gtac.edu.au/" target="_blank" style="position: fixed; top: 24px; right: 32px; z-index: 1000;">
+        <img src="assets/GTAC.png" alt="GTAC Logo" style="width: 70px; height: auto; pointer-events: auto;">
+    </a>
+    <div class="curved-box">
+        <div class="hive-title">HIVE</div>
+        <div class="subtitle">Problem Statement Generator</div>
+    </div>
+
+    <div class="curved-box" style="margin-top:30px;">
+        <div class="program-select">
+            <strong>STEP ONE: Select a Program:</strong><br>
+            <label><input type="radio" name="program" value="Build a Bettter World "> Build a Bettter World </label>
+            <label><input type="radio" name="program" value="One Health"> One Health</label>
+            <label><input type="radio" name="program" value="Tackling the Pollination Problem"> Tackling the Pollination Problem</label>
+        </div>
+    </div>
+
+    <div class="curved-box" style="margin-top:30px;">
+        <div class="dropdown-section-heading">
+            STEP TWO: Think about who is taking action, what they are trying to do, and what the action is focused on. Select one option from each dropdown.
+        </div>
+        <div class="dropdown-row">
+            <div class="dropdown">
+                <label for="involved" class="dropdown-label">
+                    <span class="dropdown-heading"><b>I</b>nvolved</span>
+                    <div class="dropdown-sub">Who is involved?</div>
+                </label>
+                <select id="involved">
+                    <option value="">-- Select --</option>
+                    <option value="I">I</option><option value="kids on my street">kids on my street</option><option value="local businesses">local businesses</option><option value="my class">my class</option><option value="my family">my family</option><option value="my friends">my friends</option><option value="my school">my school</option><option value="my sports team">my sports team</option><option value="my teacher and class">my teacher and class</option><option value="our science group">our science group</option><option value="the environment club">the environment club</option><option value="the gardening club">the gardening club</option><option value="our school community">our school community</option><option value="we">we</option>
+                </select>
+            </div>
+
+            <div class="dropdown">
+                <label for="verb" class="dropdown-label">
+                    <span class="dropdown-heading"><b>V</b>erb</span>
+                    <div class="dropdown-sub">What are you trying to do?</div>
+                </label>
+                <select id="verb">
+                    <option value="">-- Select --</option>
+                    <option value="Build a tool">Build a tool</option><option value="Clean up">Clean up</option><option value="Collect data">Collect data</option><option value="Create a website">Create a website</option><option value="Design a tool">Design a tool</option><option value="Make a video">Make a video</option><option value="Make posters">Make posters</option><option value="Organise an event">Organise an event</option><option value="Plant trees">Plant trees</option><option value="Teach others">Teach others</option><option value="build ">build </option><option value="collect ">collect </option><option value="create ">create </option><option value="design">design</option><option value="develop ">develop </option><option value="educate ">educate </option><option value="improve ">improve </option><option value="invent ">invent </option><option value="investigate ">investigate </option><option value="protect ">protect </option><option value="strengthen">strengthen</option>
+                </select>
+            </div>
+
+            <div class="dropdown">
+                <label for="event" class="dropdown-label">
+                    <span class="dropdown-heading"><b>E</b>vent</span>
+                    <div class="dropdown-sub">What does the action apply to?</div>
+                </label>
+                <select id="event">
+                    <option value="">-- Select a program first --</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="curved-box" style="margin-top:30px;">
+        <div id="output">Your HIVE statement will appear here.</div>
+    </div>
+    <button id="copy-btn" style="display:none;position:fixed;bottom:32px;right:32px;z-index:2000;padding:14px 28px;background:#821E50;color:#fff;border:none;border-radius:30px;font-size:1.1em;font-family:'Figtree',sans-serif;box-shadow:0 2px 12px rgba(0,0,0,0.10);cursor:pointer;transition:background 0.2s;">
+        Copy HIVE Statement
+    </button>
+
+    <script>
+        const eventOptions = {
+            'Build a Bettter World ': [
+                'Hospital safety',
+                'Recycling accessibility',
+                'Rubbish in waterways',
+                'Water cleanliness',
+                'Natural habitat restoration',
+                'Tree-planting robots',
+                'Robotic rubbish truck design',
+                'Plastic waste in landfill',
+                'Efficiency of patient care',
+                'Plastic in our waterways',
+                'Habitat havens in our environment',
+                'Clean school playgrounds',
+                'Plastic waste in schools',
+                'Marine life and pollution',
+                'Home recycling habits'
+            ],
+            'One Health': [
+                'Local insect populations',
+                'Rubbish at school',
+                'River health',
+                'Safe habitats for native animals',
+                'Green spaces at school',
+                'Food sources for local birds',
+                'Food waste reduction',
+                'Rubbish reduction',
+                'Noise pollution',
+                'Effective recycling practices'
+            ],
+            'Tackling the Pollination Problem': [
+                'Improved robo-pollinator',
+                'Safe homes for honey bees',
+                'Instructions for robo-pollinators',
+                'Food crop yields',
+                'Native bee health and safety',
+                'Hive health',
+                'Improved beehive design',
+                'Pollinator-friendly gardens',
+                'Pollination support technologies'
+            ]
+        };
+
+        // Map verbs to linking phrases
+        const verbLinkers = [
+            {
+                verbs: [
+                    "educate", "teach", "raise awareness", "make a video", "make posters"
+                ],
+                linker: "to raise awareness of"
+            },
+            {
+                verbs: [
+                    "clean up", "plant trees", "protect", "improve", "restore", "make safe homes", "keep a healthy river", "reduce rubbish", "reduce food waste"
+                ],
+                linker: "to protect"
+            },
+            {
+                verbs: [
+                    "investigate", "collect data", "research", "explore", "collect", "investigate"
+                ],
+                linker: "to better understand"
+            },
+            {
+                verbs: [
+                    "create", "design", "build", "invent", "develop", "build a tool", "design a tool", "create a website", "robots that help to plant trees", "efficient instructions for robo-pollinators"
+                ],
+                linker: "to help with"
+            },
+            {
+                verbs: [
+                    "organise an event", "organise", "run", "host"
+                ],
+                linker: "to bring people together for"
+            },
+            {
+                verbs: [
+                    "strengthen"
+                ],
+                linker: "to strengthen"
+            }
+        ];
+
+        // Helper to find the best linker for a verb
+        function getLinker(verb) {
+            if (!verb) return "to address";
+            const v = verb.trim().toLowerCase();
+            for (const group of verbLinkers) {
+                for (const testVerb of group.verbs) {
+                    if (v === testVerb.trim().toLowerCase()) {
+                        return group.linker;
+                    }
+                }
+            }
+            // Fallbacks for partial matches
+            if (v.includes("educate") || v.includes("teach")) return "to raise awareness of";
+            if (v.includes("clean") || v.includes("protect") || v.includes("plant")) return "to protect";
+            if (v.includes("investigate") || v.includes("collect") || v.includes("research")) return "to better understand";
+            if (v.includes("create") || v.includes("design") || v.includes("build") || v.includes("invent") || v.includes("develop")) return "to help with";
+            if (v.includes("organise") || v.includes("host") || v.includes("run")) return "to bring people together for";
+            if (v.includes("strengthen")) return "to strengthen";
+            return "to address";
+        }
+
+        // Place this function above updateStatement()
+        function generateSentence(involved, verb, event) {
+            const v = verb.toLowerCase();
+            const e = event.charAt(0).toLowerCase() + event.slice(1);
+
+            // Define verb categories with their template functions
+            const templates = [
+                {
+                    verbs: ["educate", "teach", "inform"],
+                    template: () => `How can ${involved} ${v} others about ${e}?`
+                },
+                {
+                    verbs: ["build", "design", "create", "develop"],
+                    template: () => `How can ${involved} ${v} a solution for ${e}?`
+                },
+                {
+                    verbs: ["collect", "investigate", "research", "explore"],
+                    template: () => `How can ${involved} ${v} information to understand ${e}?`
+                },
+                {
+                    verbs: ["clean", "plant", "reduce", "protect", "improve", "restore"],
+                    template: () => `How can ${involved} ${v} to improve ${e}?`
+                },
+                {
+                    verbs: ["make a video", "make posters", "share"],
+                    template: () => `How can ${involved} ${v} to raise awareness about ${e}?`
+                }
+            ];
+
+            // Try matching verb to a category
+            for (const group of templates) {
+                if (group.verbs.includes(v)) {
+                    return group.template();
+                }
+            }
+
+            // Default fallback
+            return `How can ${involved} ${v} to address ${e}?`;
+        }
+
+        document.querySelectorAll('input[name="program"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                const selectedProgram = document.querySelector('input[name="program"]:checked').value;
+                const eventSelect = document.getElementById('event');
+                eventSelect.innerHTML = '<option value="">-- Select --</option>' +
+                    eventOptions[selectedProgram].map(opt => `<option value="${opt}">${opt}</option>`).join('');
+                updateStatement();
+            });
+        });
+
+        document.getElementById('involved').addEventListener('change', updateStatement);
+        document.getElementById('verb').addEventListener('change', updateStatement);
+        document.getElementById('event').addEventListener('change', updateStatement);
+
+        // Integrate into updateStatement()
+        function updateStatement() {
+            const involvedRaw = document.getElementById('involved').value.trim();
+            const verbRaw = document.getElementById('verb').value.trim().toLowerCase();
+            const eventRaw = document.getElementById('event').value.trim();
+
+            // Do NOT capitalize the involved group, just use as-is
+            const involved = involvedRaw;
+
+            const output = document.getElementById('output');
+            const copyBtn = document.getElementById('copy-btn');
+            if (involvedRaw && verbRaw && eventRaw) {
+                output.textContent = generateSentence(involved, verbRaw, eventRaw);
+                copyBtn.style.display = 'block';
+            } else {
+                output.textContent = 'Your HIVE statement will appear here.';
+                copyBtn.style.display = 'none';
+            }
+        }
+
+        document.getElementById('copy-btn').addEventListener('click', function() {
+            const text = document.getElementById('output').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                this.textContent = "Copied!";
+                setTimeout(() => { this.textContent = "Copy HIVE Statement"; }, 1500);
+            });
+        });
+    </script>
+</body>
+</html>
